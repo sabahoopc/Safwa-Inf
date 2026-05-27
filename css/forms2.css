@@ -1,0 +1,196 @@
+/* ─── Form Page Layout ───────────────────────────── */
+.form-page { padding: 2.5rem 0 4rem; }
+
+.page-head { margin-bottom: 2rem; }
+.page-head h1 { font-size: 26px; font-weight: 700; margin-bottom: 0.5rem; }
+.page-head p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+.danger-title { color: var(--red); }
+
+/* ─── Info Banner ────────────────────────────────── */
+.info-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 0.875rem 1rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 1.5rem;
+}
+.info-banner svg { width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px; }
+.info-banner p { font-size: 13px; line-height: 1.6; }
+.info-banner--warning { background: var(--amber-light); border: 0.5px solid var(--amber-mid); }
+.info-banner--warning svg { stroke: var(--amber); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.info-banner--warning p { color: var(--amber); }
+
+/* ─── Form Card ──────────────────────────────────── */
+.form-card {
+  background: var(--bg-card);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+.form-card--danger { border-color: var(--red-mid); }
+
+/* ─── Form Groups ────────────────────────────────── */
+.form-group { margin-bottom: 1.1rem; }
+.form-group label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.form-group label svg {
+  width: 14px; height: 14px;
+  stroke: currentColor; fill: none;
+  stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+  flex-shrink: 0;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  font-size: 14px;
+  font-family: 'Tajawal', sans-serif;
+  padding: 9px 12px;
+  border: 0.5px solid var(--border-mid);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s;
+  direction: rtl;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--green); }
+.form-group textarea { resize: vertical; min-height: 100px; }
+
+.required { color: var(--red); }
+.optional { color: var(--text-hint); font-weight: 400; font-size: 12px; }
+.field-hint { font-size: 12px; color: var(--text-hint); margin-bottom: 6px; margin-top: -2px; }
+
+/* ─── Fieldset ───────────────────────────────────── */
+.form-fieldset {
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1rem 0.25rem;
+  margin-bottom: 1.1rem;
+}
+.form-fieldset legend {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+  padding: 0 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.legend-note { font-size: 12px; color: var(--text-hint); font-weight: 400; }
+
+/* ─── Photo Upload ───────────────────────────────── */
+.photo-upload {
+  position: relative;          /* حاوي للـ input */
+  border: 1px dashed var(--border-mid);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.15s;
+  height: 80px;                /* ارتفاع ثابت */
+  display: flex;
+  align-items: center;
+}
+.photo-upload:hover { border-color: var(--green); }
+
+/* الـ input يملأ الحاوي بالكامل — شفاف فوق الـ inner */
+.photo-upload input[type="file"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.photo-upload-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 1.25rem;
+  color: var(--text-hint);
+  font-size: 13px;
+  width: 100%;
+  pointer-events: none;        /* يمرر النقر للـ input */
+}
+.photo-upload-inner svg {
+  width: 20px; height: 20px;
+  stroke: currentColor; fill: none;
+  stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+/* معاينة الصورة بعد الرفع */
+.photo-upload img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* ─── Anon Note ──────────────────────────────────── */
+.anon-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-hint);
+  margin-bottom: 1rem;
+  padding: 8px 0;
+}
+.anon-note svg {
+  width: 14px; height: 14px;
+  stroke: currentColor; fill: none;
+  stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+/* ─── Errors ─────────────────────────────────────── */
+.form-error {
+  background: var(--red-light);
+  border: 0.5px solid var(--red-mid);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  font-size: 13px;
+  color: var(--red);
+  margin-bottom: 1rem;
+}
+
+/* ─── Success State ──────────────────────────────── */
+.form-success {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  background: var(--green-light);
+  border-radius: var(--radius-lg);
+}
+.form-success svg {
+  width: 48px; height: 48px;
+  stroke: var(--green); fill: none;
+  stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+  display: block; margin: 0 auto 1rem;
+}
+.form-success h2 { font-size: 20px; font-weight: 500; color: var(--green-dark); margin-bottom: 0.5rem; }
+.form-success p { font-size: 14px; color: var(--green-dark); margin-bottom: 1.5rem; }
+.form-success--warning { background: var(--amber-light); }
+.form-success--warning svg { stroke: var(--amber); }
+.form-success--warning h2,
+.form-success--warning p { color: var(--amber); }
