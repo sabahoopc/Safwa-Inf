@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>طلب إزالة — دليل مؤثري صفوى</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/forms.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <div class="logo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <span>دليل مؤثري صفوى</span>
+        </div>
+        <nav class="header-nav">
+          <a href="index.html" class="nav-link">الدليل</a>
+          <a href="nominate.html" class="nav-link">رشِّح مؤثراً</a>
+          <a href="remove.html" class="nav-link active nav-danger">طلب إزالة</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="form-page">
+    <div class="container container--narrow">
+
+      <div class="page-head">
+        <h1 class="danger-title">طلب إزالة مؤثر</h1>
+        <p>إذا رصدت انتهاكاً واضحاً للمعايير، قدِّم طلب إزالة موثقاً. تراجع الإدارة جميع الطلبات وتقرر بناءً على الأدلة المقدمة.</p>
+      </div>
+
+      <div class="info-banner info-banner--warning">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <p>الطلبات الكيدية غير الموثقة لن تُؤخذ بعين الاعتبار. في حال تراكم طلبات موثقة ومقنعة بحق مؤثر معين، سيُزال حسابه من الدليل.</p>
+      </div>
+
+      <form class="form-card form-card--danger" id="remove-form" onsubmit="submitRemoval(event)">
+
+        <div class="form-group">
+          <label for="rem-target">اسم المؤثر المراد إزالته <span class="required">*</span></label>
+          <select id="rem-target" name="rem-target" required>
+            <option value="">اختر المؤثر</option>
+            <!-- populated by js/data.js -->
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="rem-reason">سبب طلب الإزالة <span class="required">*</span></label>
+          <select id="rem-reason" name="rem-reason" required>
+            <option value="">اختر السبب الرئيسي</option>
+            <option value="bullying">محتوى تنمر أو إساءة</option>
+            <option value="misinformation">معلومات مضللة أو مزيفة</option>
+            <option value="illegal">محتوى مخالف للأنظمة</option>
+            <option value="private">الحساب أصبح خاصاً</option>
+            <option value="inactive">توقف النشاط كلياً</option>
+            <option value="hate">تحريض أو خطاب كراهية</option>
+            <option value="other">سبب آخر</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="rem-detail">شرح تفصيلي <span class="required">*</span></label>
+          <p class="field-hint">اشرح بوضوح ما رصدته وكيف يُخل بمعايير الدليل</p>
+          <textarea id="rem-detail" name="rem-detail" rows="4" placeholder="اشرح بوضوح ما رصدته..." required></textarea>
+        </div>
+
+        <fieldset class="form-fieldset">
+          <legend>الأدلة والروابط الداعمة <span class="required">*</span> <span class="legend-note">(دليل واحد على الأقل)</span></legend>
+          <div class="form-group">
+            <input type="url" id="ev1" name="ev1" placeholder="رابط المنشور أو المقطع المخالف">
+          </div>
+          <div class="form-group">
+            <input type="url" id="ev2" name="ev2" placeholder="رابط إضافي إن وجد">
+          </div>
+          <div class="form-group">
+            <input type="text" id="ev3" name="ev3" placeholder="وصف دليل آخر (لقطة شاشة، تاريخ، إلخ)">
+          </div>
+        </fieldset>
+
+        <div class="anon-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          <span>هويتك كمُقدِّم طلب الإزالة سرية تماماً — لا يُطلب منك ذكر اسمك</span>
+        </div>
+
+        <div class="form-error" id="rem-error" style="display:none"></div>
+
+        <button type="submit" class="btn btn-danger btn-full">إرسال طلب الإزالة</button>
+
+      </form>
+
+      <div class="form-success form-success--warning" id="rem-success" style="display:none">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <h2>تم استلام طلب الإزالة</h2>
+        <p>ستراجع الإدارة الأدلة المقدمة وتتخذ القرار المناسب</p>
+        <a href="index.html" class="btn btn-ghost">العودة للدليل</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>دليل مؤثري صفوى — منصة مجتمعية مستقلة غير ربحية</p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/forms.js"></script>
+</body>
+</html>
